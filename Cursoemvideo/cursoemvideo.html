@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Comandos Javascript</title>
+    <style> 
+        body{
+            background: rgb(16, 164, 233);
+            color: white;
+            font: normal 18pt Arial;
+        }
+    </style>
+</head>
+<body>
+    <h1>Teste de html</h1>
+    <p>Aprendendo a usar o <strong>DOM</strong> em Javascript</p>
+    <p>Frase de <strong>EFEITO</strong></p>
+    
+    <div id="msg">Clique em mim</div>
+    <p>Com grandes poderes vem grandes irresponsabilidades</p>
+    <script>
+        var corpo = window.document.body
+        var p1 = window.document.getElementsByTagName('p')[1]
+        p1.style.color = 'yellow'
+        corpo.style.background = 'black'
+        window.document.write("Resultado de paragrafo: "+p1.innerText)
+        
+        var d = window.document.getElementById('msg')
+        d.style.background='green'
+        d.innerText = 'Estou Aguardando...'
+
+        var e = window.document.querySelector('div#msg') //# para id . para class
+        e.style.color = 'blue'
+
+        var p2 = window.document.getElementsByTagName('p')[2]
+        document.write(p2.innerHTML)
+
+    </script>
+</body>
+</html>
