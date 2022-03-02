@@ -1,0 +1,48 @@
+<meta charset="utf-8">
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <ul>
+        <li v-for="(cor, i) in cores"
+            :key="cor">{{ i }}) {{ cor }} </li>
+        <!--Lista eficiente: obs:em (cor,i) vc sempre deve passar primeiro o elemento e depois o index-->
+    </ul>
+    <button @click="cores.push('branca')">Adicionar</button>
+    <hr>
+    <template v-for="(cor, i) in cores">
+        <h1>{{ cor }} </h1>
+        <p>{{ i }}</p>
+    </template>
+    <hr>
+    <ul>
+        <!--Lista encadeada com exibição de vários atributos-->
+        <li v-for="pessoa in pessoa">
+            <div v-for="(valor, chave, index) in pessoa"> 
+                {{chave}} = {{valor}} ({{index+1}})
+        </div>
+        </li>
+    </ul>
+
+    <hr>
+    <span v-for="n in 10">{{ n }}</span>
+
+
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+           cores: ['vermelho', 'verde', 'azul', 'amarelo'],
+           pessoa: [{
+               nome: 'Ana',
+               idade: '22',
+               sexo: 'femenino'
+           },{
+            nome: 'Pedro',
+            idade: '28',
+            sexo: 'masculino'
+            }]
+        }
+    })
+</script>
