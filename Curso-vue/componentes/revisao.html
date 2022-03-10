@@ -1,0 +1,36 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<!--Criando componentes globais com registros individuais-->
+
+<div id="app">
+    <!--O HTML é case sensitive-->
+    <CONTADOR></CONTADOR>
+    <Contador></Contador>
+    <contadoR></contadoR>
+</div>
+
+<script>
+    // Registro em forma Global
+    Vue.component('contador', { //Devemos declarar um vue.componet, e o nome da declaração
+        //Para que isso funcione, o template só aceita uma unica raiz de comando, para diblar isso, usa-se uma div
+        //Assim, várias linhas de comando são aceitas
+        template: `
+            <div>
+                <span>{{ contador }}</span>
+                <button @click="contador++">+</button>
+                <button @click="contador--">-</button>
+            </div>
+        `,
+        data() {
+            return { 
+                contador: 0 //Como o data que estava na vue deve ser neste caso uma função, devemos colocar a declaração
+                //de contador em uma função
+            }
+        }
+    })
+
+    new Vue({
+        el: '#app',
+    })
+</script>

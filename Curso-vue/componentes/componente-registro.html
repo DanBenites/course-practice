@@ -1,0 +1,54 @@
+<meta charset="UTF-8">
+<script src="https://unpkg.com/vue"></script>
+
+<!--Transformando registros globais em registros locais, e ainda sim, serem componentes de registros individuais -->
+
+<!--Cada um desses contador são registros locais,
+     eles não se interagem entre si e suas declarações podem serem nomeadas como quiser -->
+<div id="app1">
+    <contador1></contador1>
+    <contador1></contador1>
+    <contador1></contador1>
+</div>
+<hr>
+<div id="app2">
+    <app-contador></app-contador>
+    <app-contador></app-contador>
+    <app-contador></app-contador>
+</div>
+
+<script>
+    // Registro ainda é Global, mas modificamos a declaraçaõ de Vue.componets para a const contador ={}
+    //Isso faz com que devemos nossas declarações devam receber essas funcionalidades 
+    const contador = {
+        template: `
+            <div>
+                <span>{{ contador }}</span>
+                <button @click="contador++">+</button>
+                <button @click="contador--">-</button>
+            </div>
+        `,
+        data() {
+            return { 
+                contador: 0
+            }
+        }
+    }
+
+    new Vue({
+        el: '#app1',
+        // Registro Local
+        components: { //Aqui informamos ao javascript que se trata de um componente
+            contador1: contador //Fazemos com que o contador1 receba as propriedades da const contador
+        }
+    })
+
+    new Vue({
+        el: '#app2',
+        // Registro Local
+        components: {
+            'app-contador': contador //app é uma declaração restrita para o vue, mas não para o html, para diblar isso,
+            //colocamos 'nome' e ele ignora, porém, deve ser algo válido para não gerar conflito
+        }
+    })
+</script>
